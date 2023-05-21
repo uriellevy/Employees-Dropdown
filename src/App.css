@@ -1,0 +1,22 @@
+
+* {
+  margin: 0;
+  padding:0;
+  box-sizing: border-box;
+}
+
+:root {
+  --font-xs: 12px;
+  --font-s: 16px;
+  --font-m: 20px;
+  --font-l: 24px;
+  --font-xl: 28px;
+  --font-xxl: 34px;
+}
+
+.app {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  background-color: #555;
+}

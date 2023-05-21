@@ -1,0 +1,19 @@
+.infoFooterWrapper {
+    background-color: #222;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+
+    .footerDelete, .footerEdit {
+        font-size: var(--font-xxl);
+        cursor: pointer;
+    }
+
+    .footerEdit {
+        color: rgb(31, 114, 192);
+    }
+
+    .footerDelete {
+        color: rgb(253, 66, 66);
+    }
+}

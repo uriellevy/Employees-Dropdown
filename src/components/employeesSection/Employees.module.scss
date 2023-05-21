@@ -1,0 +1,14 @@
+.employeesContainer {
+    background-color: #fff;
+    margin: 15px;
+    border-radius: 15px;
+    width: 30%;
+    padding: 10px 20px;
+    .employeesContainer {
+        font-size: var(--font-l);
+        text-decoration: underline;
+    }
+    .employeesList {
+        
+    }
+}

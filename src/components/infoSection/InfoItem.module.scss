@@ -1,0 +1,33 @@
+.infoItemWrapper {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	padding: 130px;
+
+	.infoTopRow {
+		display: flex;
+		align-items: center;
+		margin-bottom: 80px;
+		max-width: 500px;
+        font-size: var(--font-m);
+
+		.infoAvatar {
+			border-radius: 50%;
+			width: 130px;
+			height: 130px;
+			margin-inline-end: 50px;
+		}
+		.topRowTextDiv {
+			.text {
+			}
+		}
+	}
+	.infoBottomRow {
+        font-size: var(--font-s);
+
+        max-width: 500px;
+
+	}
+}
