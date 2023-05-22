@@ -1,5 +1,5 @@
 export interface Employee {
-    id?: number,
+    id: number,
     first_name?: string,
     last_name?: string,
     email?: string,
@@ -10,4 +10,6 @@ export interface Employee {
     city?: string,
     manager_id?: number,
     bio?:string,
+    isSelected?: boolean
+    isEditMode: boolean
 }

@@ -5,13 +5,18 @@ import InfoItem from './InfoItem';
 import { EmployeesContext, EmployeesContextType } from '../../context/context';
 
 const InfoWrapper = () => {
-    const {employees} = useContext(EmployeesContext) as EmployeesContextType;
+    const {employees, onInfoItemDelete} = useContext(EmployeesContext) as EmployeesContextType;
     const dummyUser = employees[0];
+    const selectedEmployee = employees.find((employee) => employee.isEditMode);
 
   return (
     <div className={classes.infoWrapper}>
+        {selectedEmployee ?
         <InfoItem employee={dummyUser}/>
-        <InfoFooter/>
+        :
+            <div className={classes.notSelectedText}>Select Employee</div>
+        }
+        <InfoFooter onInfoItemDelete={onInfoItemDelete} employee={dummyUser}/>
     </div>
   )
 }

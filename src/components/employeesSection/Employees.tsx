@@ -8,10 +8,10 @@ const Employees = () => {
 
     return (
         <div className={classes.employeesContainer}>
-            <header className={classes.employeesContainer}>Employees</header>
+            <header className={classes.employeesHeader}>Employees</header>
             <ul className={classes.employeesList}>
                 {employees.map((curr,idx) => (
-                    <EmployeeItem employee={curr}/>
+                    <EmployeeItem employee={curr} key={curr.id}/>
                 ))}
             </ul>
         </div>

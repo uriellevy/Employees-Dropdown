@@ -4,9 +4,11 @@
     border-radius: 15px;
     width: 30%;
     padding: 10px 20px;
-    .employeesContainer {
+    overflow-y: scroll;
+    .employeesHeader {
         font-size: var(--font-l);
         text-decoration: underline;
+        margin-bottom: 20px;
     }
     .employeesList {
         

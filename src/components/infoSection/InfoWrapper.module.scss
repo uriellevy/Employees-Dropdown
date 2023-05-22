@@ -1,11 +1,16 @@
 .infoWrapper {
-    background-color: #fff;
-    width: 70%;
-    border-radius: 10px;
-    margin: 15px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    overflow: hidden;
+	background-color: #fff;
+	width: 70%;
+	border-radius: 10px;
+	margin: 15px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	overflow: hidden;
 
+    .notSelectedText {
+        font-size: var(--font-l);
+        padding: 30% 40%;
+        width: fit-content;
+    }
 }
