@@ -1,22 +1,28 @@
-import React, {useContext} from 'react';
+import React, { useContext, useState } from 'react';
 import classes from "./InfoWrapper.module.scss";
 import InfoFooter from './InfoFooter';
 import InfoItem from './InfoItem';
 import { EmployeesContext, EmployeesContextType } from '../../context/context';
 
 const InfoWrapper = () => {
-    const {employees, onInfoItemDelete} = useContext(EmployeesContext) as EmployeesContextType;
-    const dummyUser = employees[0];
-    const selectedEmployee = employees.find((employee) => employee.isEditMode);
+  const { employees, onInfoItemDelete, onOpenEditMode, onInfoItemEditConfirm } = useContext(EmployeesContext) as EmployeesContextType;
+  const [isEditModeOpen, setIsEditModeOpen] = useState(false);
+
+  const selectedEmployee = employees.find((curr) => curr.isSelected === true);
+
+  console.log(employees)
+
 
   return (
     <div className={classes.infoWrapper}>
-        {selectedEmployee ?
-        <InfoItem employee={dummyUser}/>
+      {selectedEmployee ?
+        <>
+          <InfoItem employee={selectedEmployee} isEditModeOpen={isEditModeOpen} onInfoItemEditConfirm={onInfoItemEditConfirm} setIsEditModeOpen={setIsEditModeOpen}/>
+          <InfoFooter onInfoItemDelete={onInfoItemDelete} setIsEditModeOpen={setIsEditModeOpen} onOpenEditMode={onOpenEditMode} employee={selectedEmployee} />
+        </>
         :
-            <div className={classes.notSelectedText}>Select Employee</div>
-        }
-        <InfoFooter onInfoItemDelete={onInfoItemDelete} employee={dummyUser}/>
+        <div className={classes.notSelectedText}>Select Employee</div>
+      }
     </div>
   )
 }

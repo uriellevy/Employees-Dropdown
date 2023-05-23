@@ -8,16 +8,16 @@ import { EmployeesContext, EmployeesContextType } from '../../context/context';
 
 interface EmployeeItemProps {
   employee: Employee
+  onEmployeeSelect: (id: number) => void
 }
 
-const EmployeeItem = ({ employee }: EmployeeItemProps) => {
+const EmployeeItem = ({ employee, onEmployeeSelect }: EmployeeItemProps) => {
   const { employees } = useContext(EmployeesContext) as EmployeesContextType;
   const { profile_pic, first_name, last_name, email } = employee;
   const [isArrowOpen, setIsArrowOpen] = useState(false);
   const subEmployees = employees.filter((item) => item.manager_id === employee.id);
   const isManager = subEmployees.length !== 0
   const arrowIconClassName = `${classes.arrowRightIcon} ${isArrowOpen ? classes.ArrowDown : ""}`
-  console.log(subEmployees, employee.first_name)
 
   const expandHandler = () => {
     if (subEmployees.length !== 0) {
@@ -26,7 +26,7 @@ const EmployeeItem = ({ employee }: EmployeeItemProps) => {
   }
 
   const selectItemHandler = (id: number) => {
-    console.log(id)
+    onEmployeeSelect(id)
   }
 
   return (
@@ -42,7 +42,7 @@ const EmployeeItem = ({ employee }: EmployeeItemProps) => {
       {isArrowOpen &&
         <>
           {subEmployees.map((curr) => (
-            <EmployeeItem employee={curr} key={curr.id} />
+            <EmployeeItem employee={curr} key={curr.id} onEmployeeSelect={onEmployeeSelect} />
           ))}
         </>}
 
