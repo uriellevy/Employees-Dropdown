@@ -1,11 +1,11 @@
-
 * {
   margin: 0;
-  padding:0;
+  padding: 0;
   box-sizing: border-box;
 }
 
 :root {
+  --input-edit-color: rgb(221, 221, 221);
   --font-xs: 12px;
   --font-s: 16px;
   --font-m: 20px;

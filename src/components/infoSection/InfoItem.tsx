@@ -75,7 +75,7 @@ const InfoItem = ({ employee, isEditModeOpen, onInfoItemEditConfirm, setIsEditMo
                     </div>
                     <div className={`${classes.editInput} ${classes.text}`}>
                         <label>{BIO}</label>
-                        <textarea className={classes.textArea} name="bio" id="" cols={30} rows={10} value={person.bio} onChange={(e: ChangeEvent<HTMLTextAreaElement>) => setPerson({ ...person, [e.target.name]: e.target.value })}></textarea>
+                        <textarea className={classes.textArea} name="bio" id="" cols={30} rows={7} value={person.bio} onChange={(e: ChangeEvent<HTMLTextAreaElement>) => setPerson({ ...person, [e.target.name]: e.target.value })}></textarea>
                     </div>
                     <input className={classes.editConfirm} type="submit" value={"Confirm"} />
                 </form>

@@ -19,7 +19,7 @@ const InfoWrapper = () => {
           <InfoFooter onInfoItemDelete={onInfoItemDelete} setIsEditModeOpen={setIsEditModeOpen} onOpenEditMode={onOpenEditMode} employee={selectedEmployee} />
         </>
         :
-        <div className={classes.notSelectedText}>{CONSTS.HEADER}</div>
+        <div className={classes.notSelectedText}>{CONSTS.EMPTY_MESSAGE}</div>
       }
     </div>
   )

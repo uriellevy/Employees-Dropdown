@@ -349,7 +349,8 @@ export const data =[
   ];
 
   export const CONSTS = {
-    HEADER: "Select Employee",
+    HEADER: "Employees",
+    EMPTY_MESSAGE: "Select Employee",
     FIRST_NAME: "First Name:",
     LAST_NAME: "Last Name:",
     USER_NAME: "User Name:",
