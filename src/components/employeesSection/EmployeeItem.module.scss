@@ -3,31 +3,35 @@
 	justify-content: flex-start;
 	flex-direction: column;
 	margin-bottom: 10px;
-	.arrowRightIcon {
-		color: rgba(0, 0, 0, 0.5);
-		cursor: pointer;
-		transition: all 0.15s ease;
-
-		&.ArrowDown {
-			transform: rotate(90deg);
-		}
-	}
-
+	
 	.mainItem {
 		display: flex;
 		justify-content: flex-start;
 		align-items: center;
+		.arrowRightIcon {
+			color: rgba(0, 0, 0, 0.5);
+			cursor: pointer;
+			transition: all 0.15s ease;
+			font-size: 30px;
+	
+			&.ArrowDown {
+				transform: rotate(90deg);
+			}
+		}
+		.dotIcon {
+			font-size: 30px;
+		}
 		.employeeImage {
 			border-radius: 50%;
-			width: 50px;
-			height: 50px;
+			width: 70px;
+			height: 70px;
 			margin-inline-end: 50px;
 		}
-		.textDiv {
-			.fullName {
-			}
-			.email {
-			}
-		}
+		// .textDiv {
+		// 	.fullName {
+		// 	}
+		// 	.email {
+		// 	}
+		// }
 	}
 }

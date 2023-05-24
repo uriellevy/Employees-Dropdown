@@ -19,10 +19,10 @@
 			height: 130px;
 			margin-inline-end: 50px;
 		}
-		.topRowTextDiv {
-			.text {
-			}
-		}
+		// .topRowTextDiv {
+		// 	.text {
+		// 	}
+		// }
 	}
 	.infoBottomRow {
 		font-size: var(--font-s);
@@ -54,18 +54,18 @@
 			}
 		}
 		.firstName {
-			margin-bottom: 30px;
+			margin-bottom: 20px;
 		}
 		.lastName {
-			margin-bottom: 30px;
+			margin-bottom: 20px;
 		}
 		.userName {
-			margin-bottom: 30px;
+			margin-bottom: 20px;
 		}
 		.text {
 			display: flex;
 			.textArea {
-				margin-bottom: 30px;
+				margin-bottom: 10px;
 				border: none;
 				outline: none;
 				font-size: var(--font-l);

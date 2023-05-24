@@ -7,7 +7,7 @@ export interface Employee {
     profile_pic?: string,
     gender?: string,
     street_address: string,
-    city?: string,
+    city: string,
     manager_id?: number,
     bio?:string,
     isSelected?: boolean

@@ -4,49 +4,44 @@ import { data } from "../consts/Consts";
 
 export interface EmployeesContextType {
     employees: Employee[]
-    onInfoItemDelete: (id:number) => void
+    onInfoItemDelete: (id: number) => void
     onEmployeeSelect: (id: number) => void
     onOpenEditMode: (id: number) => void
-    onInfoItemEditConfirm: (firstName: string, lastName: string, userName: string, bio: string, id: number) => void
+    onInfoItemEditConfirm: (currEmployee: Employee) => void
 };
 
 
 export const EmployeesContext = createContext<EmployeesContextType | null | undefined>(null);
 
 export const EmployeesContextProvider = (props: any) => {
-    const [employees, setEmployees] = useState(data.map((curr) => ({...curr, isSelected: false, isEditMode: false})));
+    const [employees, setEmployees] = useState(data.map((curr) => ({ ...curr, isSelected: false, isEditMode: false })));
 
-    
+
     const onEmployeeSelect = (id: number) => {
         const updatedList = employees.map((curr) => {
-            if(curr.id === id) {
-                return {...curr, isSelected: true};
-            }else return {...curr, isSelected: false}
+            return curr.id === id ? { ...curr, isSelected: true } : { ...curr, isSelected: false };
         });
         setEmployees(updatedList);
     }
-    
-    const onInfoItemDelete = (id:number) => {
+
+    const onInfoItemDelete = (id: number) => {
         setEmployees((prevList) => {
-          const updatedList =  prevList.filter((curr) => curr.id !== id);
-          return updatedList;
+            const updatedList = prevList.filter((curr) => curr.id !== id);
+            return updatedList;
         });
     };
 
     const onOpenEditMode = (id: number) => {
         const updatedList = employees.map((curr) => {
-            if(curr.id === id) {
-                return {...curr, isEditMode: true};
-            }else return {...curr, isEditMode: false};
+            return curr.id === id ? { ...curr, isEditMode: true } : { ...curr, isEditMode: false };
         });
         setEmployees(updatedList);
     }
 
-    const onInfoItemEditConfirm = (firstName: string, lastName: string, userName: string, bio: string, id: number) => {
+    const onInfoItemEditConfirm = (currEmployee: Employee) => {
+        const {first_name, last_name, username, bio, street_address, city} = currEmployee;
         const updatedList = employees.map((curr) => {
-            if(curr.id === id) {
-                return {...curr, first_name: firstName, last_name: lastName, username: userName, bio: bio, isEditMode:false}
-            }else return {...curr, isEditMode: false};
+            return curr.id === currEmployee.id ? { ...curr, first_name, last_name, username, bio, isEditMode: false, street_address, city } : { ...curr, isEditMode: false };
         })
         setEmployees(updatedList)
     }

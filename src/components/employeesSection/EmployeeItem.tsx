@@ -16,8 +16,8 @@ const EmployeeItem = ({ employee, onEmployeeSelect }: EmployeeItemProps) => {
   const { profile_pic, first_name, last_name, email } = employee;
   const [isArrowOpen, setIsArrowOpen] = useState(false);
   const subEmployees = employees.filter((item) => item.manager_id === employee.id);
-  const isManager = subEmployees.length !== 0
-  const arrowIconClassName = `${classes.arrowRightIcon} ${isArrowOpen ? classes.ArrowDown : ""}`
+  const isManager = subEmployees.length !== 0;
+  const arrowIconClassName = `${classes.arrowRightIcon} ${isArrowOpen ? classes.ArrowDown : ""}`;
 
   const expandHandler = () => {
     if (subEmployees.length !== 0) {
@@ -32,7 +32,7 @@ const EmployeeItem = ({ employee, onEmployeeSelect }: EmployeeItemProps) => {
   return (
     <div className={classes.employeeItemWrapper}>
       <div className={classes.mainItem} onClick={() => selectItemHandler(employee.id)}>
-        {isManager ? <MdKeyboardArrowRight className={arrowIconClassName} onClick={expandHandler} /> : <BsDot />}
+        {isManager ? <MdKeyboardArrowRight className={arrowIconClassName} onClick={expandHandler} /> : <BsDot className={classes.dotIcon} />}
         <img className={classes.employeeImage} src={profile_pic} />
         <div className={classes.textDiv}>
           <div className={classes.fullName}>{`${first_name} ${last_name}`}</div>

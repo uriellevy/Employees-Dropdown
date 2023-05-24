@@ -1,6 +1,7 @@
 import React, { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import classes from "./InfoItem.module.scss";
 import { Employee } from '../../interfaces/interfaces';
+import { CONSTS } from '../../consts/Consts';
 
 interface InfoItemProps {
     employee: Employee
@@ -10,22 +11,40 @@ interface InfoItemProps {
 }
 
 const InfoItem = ({ employee, isEditModeOpen, onInfoItemEditConfirm, setIsEditModeOpen }: InfoItemProps) => {
-    const { first_name, last_name, profile_pic, username, street_address, city, bio } = employee;
-    const [firstName, setFirstName] = useState(first_name);
-    const [lastName, setLastName] = useState(last_name);
-    const [userName, setUserName] = useState(username);
-    const [bioContent, setBioContent] = useState(employee.bio);
+    const { first_name, last_name, profile_pic, username, street_address, city, bio, id, isEditMode, isSelected, email, manager_id } = employee;
+    const { USER_NAME, LAST_NAME, FIRST_NAME, BIO, ADRESS, STREET, CITY } = CONSTS;
+ 
+    const [person, setPerson] = useState<Employee>({
+        first_name,
+        last_name,
+        username,
+        street_address,
+        city,
+        bio,
+        id,
+        isEditMode,
+        isSelected,
+        email,
+        profile_pic,
+        manager_id,
+    })
 
     useEffect(() => {
-        setFirstName(first_name)
-        setLastName(last_name)
-        setUserName(username)
-        setBioContent(bio)
+        setPerson({
+            first_name,
+            last_name,
+            username,
+            street_address,
+            city,
+            bio,
+            id,
+            isEditMode,
+        })
     }, [employee])
 
     const onEditSubmitHandler = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        onInfoItemEditConfirm(firstName, lastName, userName, bioContent, employee.id)
+        onInfoItemEditConfirm(person)
         setIsEditModeOpen(false)
     }
 
@@ -35,20 +54,28 @@ const InfoItem = ({ employee, isEditModeOpen, onInfoItemEditConfirm, setIsEditMo
             {isEditModeOpen ?
                 <form className={classes.editWrapper} onSubmit={onEditSubmitHandler}>
                     <div className={classes.editInput}>
-                        <label>First Name:</label>
-                        <input className={classes.firstName} type="text" value={firstName} onChange={(e: ChangeEvent<HTMLInputElement>) => setFirstName(e.target.value)} />
+                        <label>{FIRST_NAME}</label>
+                        <input className={classes.firstName} name='first_name' type="text" value={person.first_name} onChange={(e: ChangeEvent<HTMLInputElement>) => setPerson({ ...person, [e.target.name]: e.target.value })} />
                     </div>
                     <div className={classes.editInput}>
-                        <label>Last Name:</label>
-                        <input className={classes.lastName} type="text" value={lastName} onChange={(e: ChangeEvent<HTMLInputElement>) => setLastName(e.target.value)}/>
+                        <label>{LAST_NAME}</label>
+                        <input className={classes.lastName} name='last_name' type="text" value={person.last_name} onChange={(e: ChangeEvent<HTMLInputElement>) => setPerson({ ...person, [e.target.name]: e.target.value })} />
                     </div>
                     <div className={classes.editInput}>
-                        <label>User Name:</label>
-                        <input className={classes.userName} type="text" value={userName} onChange={(e: ChangeEvent<HTMLInputElement>) => setUserName(e.target.value)}/>
+                        <label>{USER_NAME}</label>
+                        <input className={classes.userName} name='username' type="text" value={person.username} onChange={(e: ChangeEvent<HTMLInputElement>) => setPerson({ ...person, [e.target.name]: e.target.value })} />
+                    </div>
+                    <div className={classes.editInput}>
+                        <label>{STREET}</label>
+                        <input className={classes.userName} name='street_address' type="text" value={person.street_address} onChange={(e: ChangeEvent<HTMLInputElement>) => setPerson({ ...person, [e.target.name]: e.target.value })} />
+                    </div>
+                    <div className={classes.editInput}>
+                        <label>{CITY}</label>
+                        <input className={classes.userName} name='city' type="text" value={person.city} onChange={(e: ChangeEvent<HTMLInputElement>) => setPerson({ ...person, [e.target.name]: e.target.value })} />
                     </div>
                     <div className={`${classes.editInput} ${classes.text}`}>
-                        <label>Bio Content:</label>
-                        <textarea className={classes.textArea} name="" id="" cols={30} rows={10} value={bioContent} onChange={(e: ChangeEvent<HTMLTextAreaElement>) => setBioContent(e.target.value)}></textarea>
+                        <label>{BIO}</label>
+                        <textarea className={classes.textArea} name="bio" id="" cols={30} rows={10} value={person.bio} onChange={(e: ChangeEvent<HTMLTextAreaElement>) => setPerson({ ...person, [e.target.name]: e.target.value })}></textarea>
                     </div>
                     <input className={classes.editConfirm} type="submit" value={"Confirm"} />
                 </form>
@@ -58,8 +85,8 @@ const InfoItem = ({ employee, isEditModeOpen, onInfoItemEditConfirm, setIsEditMo
                         <img className={classes.infoAvatar} src={profile_pic} alt={first_name} />
                         <div className={classes.topRowTextDiv}>
                             <div className={classes.text}>{`${first_name} ${last_name}`}</div>
-                            <div className={classes.text}>{`User Name: ${username}`}</div>
-                            <div className={classes.text}>{`Adress: ${street_address}, ${city}`}</div>
+                            <div className={classes.text}>{`${USER_NAME} ${username}`}</div>
+                            <div className={classes.text}>{`${ADRESS} ${street_address}, ${city}`}</div>
                         </div>
                     </div>
                     <div className={classes.infoBottomRow}>

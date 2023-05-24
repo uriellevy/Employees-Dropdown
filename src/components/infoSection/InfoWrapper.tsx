@@ -3,15 +3,13 @@ import classes from "./InfoWrapper.module.scss";
 import InfoFooter from './InfoFooter';
 import InfoItem from './InfoItem';
 import { EmployeesContext, EmployeesContextType } from '../../context/context';
+import { CONSTS } from '../../consts/Consts';
 
 const InfoWrapper = () => {
   const { employees, onInfoItemDelete, onOpenEditMode, onInfoItemEditConfirm } = useContext(EmployeesContext) as EmployeesContextType;
   const [isEditModeOpen, setIsEditModeOpen] = useState(false);
 
   const selectedEmployee = employees.find((curr) => curr.isSelected === true);
-
-  console.log(employees)
-
 
   return (
     <div className={classes.infoWrapper}>
@@ -21,7 +19,7 @@ const InfoWrapper = () => {
           <InfoFooter onInfoItemDelete={onInfoItemDelete} setIsEditModeOpen={setIsEditModeOpen} onOpenEditMode={onOpenEditMode} employee={selectedEmployee} />
         </>
         :
-        <div className={classes.notSelectedText}>Select Employee</div>
+        <div className={classes.notSelectedText}>{CONSTS.HEADER}</div>
       }
     </div>
   )

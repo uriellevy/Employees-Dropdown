@@ -347,3 +347,14 @@ export const data =[
       "bio": "Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem. Fusce consequat. Nulla nisl."
     }
   ];
+
+  export const CONSTS = {
+    HEADER: "Select Employee",
+    FIRST_NAME: "First Name:",
+    LAST_NAME: "Last Name:",
+    USER_NAME: "User Name:",
+    BIO: "Bio Content:",
+    ADRESS: "Adress:",
+    STREET: "Street:",
+    CITY: " City:"
+  }
