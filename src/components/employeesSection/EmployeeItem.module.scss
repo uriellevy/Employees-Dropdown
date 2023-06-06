@@ -32,5 +32,8 @@
 			height: 70px;
 			margin-inline-end: 50px;
 		}
+		div > * {
+			font-size: calc(12px + 0.5vw);
+		}
 	}
 }
